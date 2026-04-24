@@ -26,6 +26,14 @@ The top-level reference every author reads before editing this project.
 
 (Things every author reviewing this manuscript must respect. E.g., "no interiority in italics," "no second-person," "British English spelling," "present tense only.")
 
+## Manuscript
+
+**Path:** `manuscript/` (at project root, sibling to `.great-authors/`)
+**Naming:** `chapter-NN.md` (zero-padded: `chapter-01.md`, `chapter-02.md`, ...)
+**Current:** (the chapter you're actively working on — e.g., `chapter-01.md`)
+
+Commands that generate prose (`/authors-draft`, `/authors-channel`) save to the `Current` file by default. Update this field when you move on to the next chapter, or override per-command with `--to <path>`.
+
 ## Established facts
 
 (Anything about the world, the rules of the game, the history of the characters that's settled. If it's here, authors trust it; if it's contradicted in the manuscript, they flag it.)

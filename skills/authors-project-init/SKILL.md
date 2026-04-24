@@ -9,11 +9,12 @@ Initialize the per-project memory bible for a writing project.
 
 ## What this does
 
-Creates a `.great-authors/` folder in the current working directory with a standardized structure that every author persona in this plugin reads before editing:
+Creates two sibling directories in the current working directory:
 
+**1. `.great-authors/`** — the project bible (metadata every author persona reads before editing):
 ```
 .great-authors/
-├── project.md      # genre, voice, premise, POV, tense
+├── project.md      # genre, voice, premise, POV, tense, manuscript config
 ├── voice.md        # voice rules for this project
 ├── timeline.md     # chronology
 ├── glossary.md     # invented terms, brands, dialect
@@ -21,6 +22,12 @@ Creates a `.great-authors/` folder in the current working directory with a stand
 ├── places/         # one file per place
 ├── scenes/         # one file per scene or beat card
 └── journal/        # dated session entries (YYYY-MM-DD.md)
+```
+
+**2. `manuscript/`** — the actual writing (where `/authors-draft` and `/authors-channel` save generated prose):
+```
+manuscript/
+└── <starting-chapter>.md   # empty to start, filled as you write
 ```
 
 ## When to use
@@ -45,15 +52,23 @@ When this skill is invoked:
    d. POV and tense? (e.g., "third-person limited past")
    e. Dominant tone? (one word or phrase)
    f. One non-negotiable voice rule for this project? (can be skipped — user can fill in later)
+   g. Starting chapter filename? Default: `chapter-01.md`. Accept any valid markdown filename (e.g., `prologue.md`, `part-1-chapter-01.md`).
 
-4. **Copy the template tree** from the plugin's `templates/project-bible/` to the target `.great-authors/` directory. The plugin install path varies; locate it by checking the skill's own file path and resolving `../../templates/project-bible/` relative to `SKILL.md`.
+4. **Scaffold both directories:**
+   a. Copy the template tree from the plugin's `templates/project-bible/` to the target `.great-authors/` directory. The plugin install path varies; locate it by checking the skill's own file path and resolving `../../templates/project-bible/` relative to `SKILL.md`.
+   b. Create `manuscript/` at the project root (sibling to `.great-authors/`).
+   c. Create an empty file at `manuscript/<starting-chapter>.md` using the filename from question 3g.
 
-5. **Substitute the user's answers** into the relevant sections of `project.md` and `voice.md`. Leave the rest of the guiding prose as-is — the user will fill it in or delete it as they work.
+5. **Substitute the user's answers** into the relevant sections of `project.md` and `voice.md`:
+   - Working title, Genre, Premise, POV and tense, Register and voice go into the matching sections of `project.md`.
+   - One non-negotiable rule (if given) goes into `voice.md`.
+   - The starting chapter filename goes into `project.md`'s `## Manuscript` section as the `Current:` field.
+   Leave the rest of the guiding prose as-is — the user fills in or deletes as they work.
 
 6. **Report what was created:**
    ```
    Created .great-authors/ with:
-     project.md (working title, genre, premise, POV, tone filled in)
+     project.md (working title, genre, premise, POV, tone, and manuscript config filled in)
      voice.md (one rule filled in; rest ready for editing)
      timeline.md (empty skeleton)
      glossary.md (empty skeleton)
@@ -62,7 +77,10 @@ When this skill is invoked:
      scenes/ (empty)
      journal/ (empty — entries added by /authors-journal)
 
-   Next: run /authors-channel <author> or drop a draft into the directory and run an editing command. Use /authors-journal at the end of each session to capture decisions.
+   Created manuscript/ with:
+     <starting-chapter>.md (empty — ready for your first prose)
+
+   Next: run /authors-channel <author> to write, or /authors-draft "<brief>" <author> to generate a draft. Prose lands in manuscript/ by default. Use /authors-journal at the end of each session to capture decisions.
    ```
 
 ## Notes

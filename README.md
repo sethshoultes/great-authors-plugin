@@ -9,7 +9,7 @@ Ten legendary author personas (Hemingway, McCarthy, Didion, Baldwin, McPhee, Wal
 /plugin install great-authors@sethshoultes
 ```
 
-## What's in v0.6
+## What's in v0.7
 
 ### 10 Author Personas
 
@@ -53,23 +53,30 @@ Ten legendary author personas (Hemingway, McCarthy, Didion, Baldwin, McPhee, Wal
 | `/authors-journal` | Capture a session journal entry — decisions, unresolved threads, where you left off. |
 | `/authors-consolidate` | Promote recurring journal decisions to the permanent bible. |
 
-## Per-project memory
+## Per-project memory and manuscript
 
-For novels, book-length nonfiction, or any project where you want consistency across sessions, run `/authors-project-init` in your project directory. It creates:
+For novels, book-length nonfiction, or any project where you want consistency across sessions, run `/authors-project-init` in your project directory. It creates two sibling directories:
 
+**`.great-authors/`** — the project bible (metadata):
 ```
 .great-authors/
-├── project.md      # genre, voice, premise, POV, tense
+├── project.md      # genre, voice, premise, POV, tense, manuscript config
 ├── voice.md        # voice rules for this project
 ├── timeline.md     # chronology
 ├── glossary.md     # invented terms, brands, dialect
 ├── characters/     # one file per character (use /authors-build-character)
-├── places/         # one file per place
+├── places/         # one file per place (use /authors-build-place)
 ├── scenes/         # one file per scene or beat card (use /authors-build-scene)
 └── journal/        # dated session entries (use /authors-journal)
 ```
 
-Every author persona reads the relevant bible files — including the most recent journal entry — before editing any passage. No author "memorizes" the project; each invocation reads what's relevant, each time.
+**`manuscript/`** — the actual writing:
+```
+manuscript/
+└── chapter-01.md   # (or whatever filename you chose at init)
+```
+
+Every author persona reads the relevant bible files — including the most recent journal entry — before editing any passage. Generated prose from `/authors-draft` lands in `manuscript/` automatically; prose from `/authors-channel` lands there when you say "save that."
 
 ### Using with Obsidian
 

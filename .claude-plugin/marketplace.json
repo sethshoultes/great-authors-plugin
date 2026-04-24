@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "great-authors",
-      "description": "Ten author personas + 13 slash commands for prose craft, editorial work, bible management (characters, scenes, places, relationships), and session journaling. Full writer's agency for Claude Code.",
+      "description": "Ten author personas + 13 slash commands for prose craft and editorial work. Drafted prose lands in manuscript/ on disk by default, not stranded in chat. Full project-bible management (characters, scenes, places, relationships, journal).",
       "source": "./",
       "category": "productivity"
     }
