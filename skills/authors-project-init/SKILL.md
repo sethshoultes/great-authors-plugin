@@ -19,7 +19,8 @@ Creates a `.great-authors/` folder in the current working directory with a stand
 ├── glossary.md     # invented terms, brands, dialect
 ├── characters/     # one file per character
 ├── places/         # one file per place
-└── scenes/         # one file per scene or beat card
+├── scenes/         # one file per scene or beat card
+└── journal/        # dated session entries (YYYY-MM-DD.md)
 ```
 
 ## When to use
@@ -59,8 +60,9 @@ When this skill is invoked:
      characters/ (empty)
      places/ (empty)
      scenes/ (empty)
+     journal/ (empty — entries added by /authors-journal)
 
-   Next: run /authors-channel <author> or drop a draft into the directory and run an editing command.
+   Next: run /authors-channel <author> or drop a draft into the directory and run an editing command. Use /authors-journal at the end of each session to capture decisions.
    ```
 
 ## Notes
