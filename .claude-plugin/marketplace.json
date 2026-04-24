@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "great-authors",
-      "description": "Ten author personas + 10 slash commands: /authors-channel, /authors-edit, /authors-critique, /authors-debate, /authors-project-init, /authors-build-character, /authors-build-scene, /authors-journal, /authors-consolidate, /authors-continuity.",
+      "description": "Ten author personas + 11 slash commands including /authors-draft for voice-takeover drafting with auto-sketched characters, /authors-edit, /authors-critique, /authors-debate, and full project-bible management.",
       "source": "./",
       "category": "productivity"
     }
