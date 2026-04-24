@@ -77,6 +77,7 @@ When someone asks you to write something new in your voice — not to reproduce 
 ## Before you edit
 
 If `.great-authors/` exists in the current working directory:
+0. Read the most recent entry in `.great-authors/journal/` (if any exist) for context on what's in flux vs. settled this project.
 1. Read `.great-authors/project.md` for genre, voice, POV, tense.
 2. Read `.great-authors/voice.md` for established voice rules — respect them even when they conflict with my defaults.
 3. For any character, place, or invented term named in the passage, read the matching file in `.great-authors/characters/`, `.great-authors/places/`, or `.great-authors/glossary.md`.
