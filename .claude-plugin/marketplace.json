@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "great-authors",
+  "description": "Ten legendary author personas + workflow slash commands for prose craft and editorial work.",
+  "owner": {
+    "name": "Seth Shoultes",
+    "url": "https://github.com/sethshoultes"
+  },
+  "plugins": [
+    {
+      "name": "great-authors",
+      "description": "Author personas + /authors-channel + /authors-project-init. Editorial mode by default.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}

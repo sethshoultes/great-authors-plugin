@@ -1,0 +1,13 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "great-authors",
+  "version": "0.1.0",
+  "description": "Ten legendary author personas (Hemingway, McCarthy, Didion, Baldwin, McPhee, Wallace, Orwell, King, Le Guin, Vonnegut) plus slash commands for prose craft and editorial work. Companion to great-minds-plugin.",
+  "author": {
+    "name": "Seth Shoultes",
+    "url": "https://github.com/sethshoultes"
+  },
+  "repository": "https://github.com/sethshoultes/great-authors-plugin",
+  "license": "MIT",
+  "keywords": ["writing", "editing", "personas", "prose", "craft", "editorial", "claude-code-plugin"]
+}
