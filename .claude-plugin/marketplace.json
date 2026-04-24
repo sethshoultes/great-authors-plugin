@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "great-authors",
-      "description": "Author personas + /authors-channel + /authors-project-init. Editorial mode by default.",
+      "description": "Ten author personas + 7 slash commands: /authors-channel, /authors-edit, /authors-critique, /authors-debate, /authors-project-init, /authors-build-character, /authors-build-scene.",
       "source": "./",
       "category": "productivity"
     }
