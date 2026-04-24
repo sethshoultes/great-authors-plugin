@@ -1,0 +1,80 @@
+{
+  "dxt_version": "0.1",
+  "name": "great-authors",
+  "display_name": "Great Authors",
+  "version": "1.0.0",
+  "description": "Ten legendary author personas (Hemingway, McCarthy, Didion, Baldwin, McPhee, Wallace, Orwell, King, Le Guin, Vonnegut) plus 14 tools for prose craft, editorial work, and long-form project management.",
+  "long_description": "Channel prose craft from ten canonical writers. Get multi-author markup on a draft, fast 3-bullet critiques, or 2-round debates between two author voices. Build a persistent project bible with characters, scenes, places, relationships, a timeline, and a session journal — every author reads the bible before editing, so long-form work stays consistent across sessions. Drafted prose lands in manuscript/ on disk by default, never stranded in chat.",
+  "author": {
+    "name": "Seth Shoultes",
+    "email": "seth@caseproof.com"
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "server/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/server/index.js"]
+    }
+  },
+  "tools": [
+    {
+      "name": "list_authors",
+      "description": "List the ten author personas plus four tool personas with one-line descriptions of each."
+    },
+    {
+      "name": "authors_channel",
+      "description": "Return a prompt that loads a named author persona into the conversation for direct collaborative drafting or editing. Supports short forms (papa, dfw, leguin). Valid authors: hemingway, orwell, didion, baldwin, mcphee, wallace, king, mccarthy, vonnegut, le-guin."
+    },
+    {
+      "name": "authors_draft",
+      "description": "Return a prompt that drafts new prose in a named author's voice, based on a brief. Saves output to a local file (manuscript/<path>) when Claude Desktop has filesystem access configured. Use when you want a first-draft pass in a specific voice."
+    },
+    {
+      "name": "authors_edit",
+      "description": "Return a prompt that fans out a draft to 1-2 author personas and consolidates their marked-up critique into a single view. The prompt takes the draft content as input, not a file path."
+    },
+    {
+      "name": "authors_critique",
+      "description": "Return a prompt for a fast 3-bullet verdict on a draft from 3 author personas in parallel. Cheaper and faster than authors_edit."
+    },
+    {
+      "name": "authors_debate",
+      "description": "Return a prompt for a 2-round craft debate between two named author personas on a specific passage or topic. Consolidation names the real tension and picks a winner or offers a third option."
+    },
+    {
+      "name": "authors_continuity",
+      "description": "Return a prompt for a bible-vs-draft continuity audit. Flags character detail drift, timeline contradictions, voice rule violations, invented-term misuse. Requires the user's bible files to be accessible via Claude Desktop's filesystem."
+    },
+    {
+      "name": "authors_project_init",
+      "description": "Return a prompt that interviews the user for their project's bible setup (working title, genre, premise, POV, tense, starting chapter) and writes .great-authors/ scaffold + manuscript/ directory. Requires filesystem access."
+    },
+    {
+      "name": "authors_build_character",
+      "description": "Return a prompt that conducts a seven-question character interview, with optional author-lens (king, le-guin), and writes the output to .great-authors/characters/<name>.md."
+    },
+    {
+      "name": "authors_build_scene",
+      "description": "Return a prompt that conducts an eight-question scene card interview, with optional author-lens (mcphee, vonnegut), and writes the output to .great-authors/scenes/<id>.md."
+    },
+    {
+      "name": "authors_build_place",
+      "description": "Return a prompt that conducts a seven-question place interview, with optional author-lens (mcphee, didion), and writes the output to .great-authors/places/<name>.md."
+    },
+    {
+      "name": "authors_build_relationship",
+      "description": "Return a prompt that conducts a six-question relationship interview between two existing characters and updates the Connections section in BOTH character files."
+    },
+    {
+      "name": "authors_journal",
+      "description": "Return a prompt that interviews the user for their session journal entry (what was worked on, decisions made, unresolved, next session) and writes it to .great-authors/journal/YYYY-MM-DD.md."
+    },
+    {
+      "name": "authors_consolidate",
+      "description": "Return a prompt that scans journal entries and offers to promote recurring decisions to the permanent bible files. Requires at least 3 journal entries."
+    }
+  ],
+  "keywords": ["writing", "editing", "personas", "prose", "craft", "editorial", "novel", "bible"],
+  "license": "MIT"
+}

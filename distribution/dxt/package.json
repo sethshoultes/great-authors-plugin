@@ -1,0 +1,14 @@
+{
+  "name": "great-authors-dxt",
+  "version": "1.0.0",
+  "description": "Great Authors MCP server for Claude Desktop",
+  "main": "server/index.js",
+  "type": "module",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "pack": "npx @anthropic-ai/dxt pack"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "great-authors",
-  "description": "Ten legendary author personas + workflow slash commands for prose craft and editorial work.",
+  "description": "Ten author personas + 13 slash commands for prose craft and editorial work. Drafted prose lands in manuscript/ on disk by default. Full project-bible management.",
   "owner": {
     "name": "Seth Shoultes",
     "url": "https://github.com/sethshoultes"
@@ -9,8 +9,14 @@
   "plugins": [
     {
       "name": "great-authors",
-      "description": "Ten author personas + 13 slash commands for prose craft and editorial work. Drafted prose lands in manuscript/ on disk by default, not stranded in chat. Full project-bible management (characters, scenes, places, relationships, journal).",
+      "description": "Ten author personas + 13 slash commands for writing craft, editorial work, and long-form project management with a living bible. For Claude Code.",
       "source": "./",
+      "category": "productivity"
+    },
+    {
+      "name": "great-authors-dxt",
+      "description": "Same personas and commands as great-authors, packaged as a Claude Desktop extension. Build: cd distribution/dxt && npm install && npx @anthropic-ai/dxt pack",
+      "source": "./distribution/dxt",
       "category": "productivity"
     }
   ]
