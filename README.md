@@ -9,7 +9,7 @@ Ten legendary author personas (Hemingway, McCarthy, Didion, Baldwin, McPhee, Wal
 /plugin install great-authors@sethshoultes
 ```
 
-## What's in v0.3
+## What's in v0.4
 
 ### 10 Author Personas
 
@@ -33,11 +33,12 @@ Ten legendary author personas (Hemingway, McCarthy, Didion, Baldwin, McPhee, Wal
 | `character-builder` | Interviews you to build a character entry in the project bible. Optional `--author` lens. |
 | `scene-builder` | Interviews you to build a scene beat card. Optional `--author` lens. |
 
-### 10 Slash Commands
+### 11 Slash Commands
 
 | Command | Purpose |
 |---------|---------|
 | `/authors-channel <author>` | Load an author into the main conversation for direct collaboration. |
+| `/authors-draft <brief> <author>` | Draft new prose in an author's voice. Auto-sketches new characters into the bible. |
 | `/authors-edit <file> [authors...]` | Mark up a draft with consolidated edits from 1-2 authors. |
 | `/authors-critique <file> [authors...]` | Fast 3-bullet verdicts from 3 authors in parallel. |
 | `/authors-debate <topic> <author-A> <author-B>` | 2-round craft dispute between two authors. |
@@ -86,7 +87,8 @@ cd ~/my-novel
 /authors-build-character marcus --author king  # (once) build the character
 /authors-build-scene ch14-confrontation --author mcphee  # (once) outline the scene
 
-# draft ch14.md as usual...
+# draft ch14.md as usual... or let an author start the draft:
+/authors-draft "opening diner scene, Marcus confronts Elena about the letter" king
 # then at any point:
 /authors-edit ch14.md king vonnegut            # marked-up feedback
 /authors-continuity ch14.md                    # catch character/timeline drifts
@@ -101,7 +103,6 @@ cd ~/my-novel
 
 ## Roadmap
 
-- **v0.4** — `/authors-draft` voice-takeover drafting + Mode B activation for builders (auto-sketch characters introduced mid-draft)
 - **v0.5** — `place-builder` and `relationship-builder` (finishes the builder set)
 - **v0.6** — model split (TERSE + Haiku for critique; Sonnet stays for edit)
 - **v1.0** — DXT package for Claude Desktop
