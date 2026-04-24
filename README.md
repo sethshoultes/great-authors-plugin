@@ -9,7 +9,7 @@ Ten legendary author personas (Hemingway, McCarthy, Didion, Baldwin, McPhee, Wal
 /plugin install great-authors@sethshoultes
 ```
 
-## What's in v0.4
+## What's in v0.5
 
 ### 10 Author Personas
 
@@ -32,8 +32,10 @@ Ten legendary author personas (Hemingway, McCarthy, Didion, Baldwin, McPhee, Wal
 |-------|------|
 | `character-builder` | Interviews you to build a character entry in the project bible. Optional `--author` lens. |
 | `scene-builder` | Interviews you to build a scene beat card. Optional `--author` lens. |
+| `place-builder` | Interviews you to build a place entry — sensory, meaning, change. Optional `--author` lens (mcphee, didion). |
+| `relationship-builder` | Interviews you about a relationship between two existing characters; updates both files reciprocally. |
 
-### 11 Slash Commands
+### 13 Slash Commands
 
 | Command | Purpose |
 |---------|---------|
@@ -46,6 +48,8 @@ Ten legendary author personas (Hemingway, McCarthy, Didion, Baldwin, McPhee, Wal
 | `/authors-project-init` | Initialize a per-project memory bible (`.great-authors/`). |
 | `/authors-build-character <name> [--author <x>]` | Build a character entry in the bible. |
 | `/authors-build-scene [<id>] [--author <x>]` | Build a scene beat card in the bible. |
+| `/authors-build-place <name> [--author <x>]` | Build a place entry in the bible. |
+| `/authors-build-relationship <a> <b>` | Build a relationship entry between two existing characters. |
 | `/authors-journal` | Capture a session journal entry — decisions, unresolved threads, where you left off. |
 | `/authors-consolidate` | Promote recurring journal decisions to the permanent bible. |
 
@@ -103,7 +107,6 @@ cd ~/my-novel
 
 ## Roadmap
 
-- **v0.5** — `place-builder` and `relationship-builder` (finishes the builder set)
 - **v0.6** — model split (TERSE + Haiku for critique; Sonnet stays for edit)
 - **v1.0** — DXT package for Claude Desktop
 
