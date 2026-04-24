@@ -25,6 +25,7 @@ Not for: marked-up passages (that's `/authors-edit`); craft debates between two 
 
 4. **Fan out via Agent tool.** Dispatch all authors in parallel in a single message. For each:
    - `subagent_type: <author>-persona`
+   - `model: "haiku"` (override — critique is opinion-style and tolerates the cheaper model; edit and debate stay on Sonnet)
    - Prompt:
      ```
      CRITIQUE MODE - TERSE OUTPUT ONLY.
@@ -74,3 +75,4 @@ Not for: marked-up passages (that's `/authors-edit`); craft debates between two 
 - This skill is cheap by design. Resist the temptation to pad the output.
 - If any author returns more than 3 bullets, trim their output to 3 in consolidation — report verbatim otherwise.
 - Sub-agents inherit cwd; bible files are read automatically via each persona's protocol.
+- **Model:** each sub-agent dispatch includes `model: "haiku"` as an override. This is intentional — critique is opinion-style work that doesn't require Sonnet-level reasoning. If you find critiques losing quality on Haiku (e.g., personas drift off-voice, cross-references hallucinate), drop the override in the Agent call and the dispatch falls back to the agent's default `model: sonnet`.

@@ -9,7 +9,7 @@ Ten legendary author personas (Hemingway, McCarthy, Didion, Baldwin, McPhee, Wal
 /plugin install great-authors@sethshoultes
 ```
 
-## What's in v0.5
+## What's in v0.6
 
 ### 10 Author Personas
 
@@ -107,10 +107,15 @@ cd ~/my-novel
 
 ## Roadmap
 
-- **v0.6** — model split (TERSE + Haiku for critique; Sonnet stays for edit)
 - **v1.0** — DXT package for Claude Desktop
 
 See `docs/superpowers/specs/2026-04-24-great-authors-plugin-design.md` for the full design and `docs/superpowers/plans/` for implementation plans.
+
+## Performance notes
+
+- **`/authors-critique`** dispatches sub-agents on **Haiku** — triaging opinions doesn't need Sonnet, and the command is designed to run often.
+- **`/authors-edit`**, **`/authors-debate`**, **`/authors-draft`**, **`/authors-channel`**, and all builder interviews stay on **Sonnet** — these involve actual reasoning about prose or extended dialog.
+- **`/authors-continuity`** stays on Sonnet — the auditor has to read the full bible and hold multiple files in context.
 
 ## License
 

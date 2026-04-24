@@ -1,6 +1,6 @@
 {
   "name": "great-authors",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Ten legendary author personas + workflow slash commands for prose craft and editorial work.",
   "author": "Seth Shoultes <seth@caseproof.com>",
   "repository": "github:sethshoultes/great-authors-plugin",
