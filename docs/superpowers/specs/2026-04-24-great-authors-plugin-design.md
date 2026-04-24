@@ -101,7 +101,7 @@ color: blue
 
 ### Conversion lift
 
-Source material is `/Users/sethshoultes/Downloads/great-authors/*/SKILL.md` + `great-authors-profiles.md`. Sections 1–4 and 8 are already written in most files. The lift per author is: add frontmatter, add sections 5–7, reconcile with the profile doc. Hemingway must be written from scratch (his source dir is empty).
+Source material is `/Users/sethshoultes/Downloads/great-authors/*/SKILL.md` + `great-authors-profiles.md`. All ten authors have source `SKILL.md` files. Sections 1–4 and 8 are already written in most. The lift per author is: rewrite frontmatter to the agent schema (`model`, `color`, structured description with examples), add sections 5–7 where missing, reconcile with the profile doc.
 
 ### Color assignments (for Claude Code UI)
 
@@ -459,8 +459,7 @@ Both builders reuse the protocol defined in Section 6: read `.great-authors/` be
 
 ## Open risks
 
-- **Hemingway from scratch.** The source `SKILL.md` is missing. Authoring it lives in the implementation plan, not the spec. Risk: voice drift — mitigated by the profiles doc's detailed Hemingway section as the source of truth.
-- **Author-lens in builders.** Nine authors × two builders = eighteen possible interview variants. Only genuinely different questions merit lens treatment. Implementation plan must scope which lenses ship in v1 vs. which are "use default questions until proven necessary."
+- **Author-lens in builders.** Ten authors × two builders = twenty possible interview variants. Only genuinely different questions merit lens treatment. Implementation plan must scope which lenses ship in v1 vs. which are "use default questions until proven necessary."
 - **Cross-reference drift.** Hand-authoring 40+ cross-refs (4–5 per author, 10 authors) has a consistency risk. Mitigation: profile doc's "Not for" sections are the ground truth; cross-refs should lift from there verbatim where possible.
 - **DXT later means ten authors need a second persona format.** Caught early — Phase 3 will pay this cost once, not across iterations.
 
