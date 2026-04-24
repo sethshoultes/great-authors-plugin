@@ -4,12 +4,19 @@ Ten legendary author personas (Hemingway, McCarthy, Didion, Baldwin, McPhee, Wal
 
 ## Install
 
+**Claude Code:**
 ```
 /plugin marketplace add sethshoultes/great-authors-plugin
 /plugin install great-authors@sethshoultes
 ```
 
-## What's in v0.7
+**Claude Desktop** (DXT bundle):
+```bash
+cd distribution/dxt && npm install && npx @anthropic-ai/dxt pack
+```
+Share the generated `great-authors.dxt` — teammates double-click to install.
+
+## What's in v1.0
 
 ### 10 Author Personas
 
@@ -114,7 +121,7 @@ cd ~/my-novel
 
 ## Roadmap
 
-- **v1.0** — DXT package for Claude Desktop
+All v1.0 goals shipped. Future work is driven by user feedback — open an issue at https://github.com/sethshoultes/great-authors-plugin/issues.
 
 See `docs/superpowers/specs/2026-04-24-great-authors-plugin-design.md` for the full design and `docs/superpowers/plans/` for implementation plans.
 
