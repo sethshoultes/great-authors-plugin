@@ -2,8 +2,8 @@
   "dxt_version": "0.1",
   "name": "great-authors",
   "display_name": "Great Authors",
-  "version": "1.0.0",
-  "description": "Ten legendary author personas (Hemingway, McCarthy, Didion, Baldwin, McPhee, Wallace, Orwell, King, Le Guin, Vonnegut) plus 14 tools for prose craft, editorial work, and long-form project management.",
+  "version": "1.1.0",
+  "description": "Eleven personas (ten authors plus Robert Gottlieb the editor) plus 14 tools for prose craft, editorial work, and long-form project management. The Claude Code plugin v1.1 also adds an authors_rewrite slash command which is not yet wired into this DXT MCP server.",
   "long_description": "Channel prose craft from ten canonical writers. Get multi-author markup on a draft, fast 3-bullet critiques, or 2-round debates between two author voices. Build a persistent project bible with characters, scenes, places, relationships, a timeline, and a session journal — every author reads the bible before editing, so long-form work stays consistent across sessions. Drafted prose lands in manuscript/ on disk by default, never stranded in chat.",
   "author": {
     "name": "Seth Shoultes",
