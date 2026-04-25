@@ -1,6 +1,8 @@
 # Voice Rules
 
-Rules specific to THIS project's voice. Authors editing this manuscript respect these even when they conflict with their default preferences.
+Rules specific to THIS project's voice — *judgment calls* that authors editing this manuscript respect even when they conflict with their default preferences.
+
+Mechanical rules that can be checked automatically (forbidden words, forbidden dialogue tags, punctuation conventions enforceable by pattern) live in `voice-lints.md` instead. The two files together specify the project's voice; this one holds what humans (and personas) need to interpret, the other holds what tools can enforce.
 
 ## Sentence rhythm
 

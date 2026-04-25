@@ -14,8 +14,10 @@ Creates two sibling directories in the current working directory:
 **1. `.great-authors/`** — the project bible (metadata every author persona reads before editing):
 ```
 .great-authors/
+├── CLAUDE.md       # project orchestration mode — tells Claude to orchestrate, not write
 ├── project.md      # genre, voice, premise, POV, tense, manuscript config
-├── voice.md        # voice rules for this project
+├── voice.md        # voice rules for this project (judgment calls)
+├── voice-lints.md  # voice rules that can be checked mechanically
 ├── timeline.md     # chronology
 ├── glossary.md     # invented terms, brands, dialect
 ├── characters/     # one file per character
@@ -68,8 +70,10 @@ When this skill is invoked:
 6. **Report what was created:**
    ```
    Created .great-authors/ with:
+     CLAUDE.md (project orchestration mode — sets Claude's role for this project)
      project.md (working title, genre, premise, POV, tone, and manuscript config filled in)
-     voice.md (one rule filled in; rest ready for editing)
+     voice.md (one rule filled in; rest ready for editing — judgment calls)
+     voice-lints.md (skeleton — mechanical rules for continuity checks)
      timeline.md (empty skeleton)
      glossary.md (empty skeleton)
      characters/ (empty)
@@ -79,6 +83,8 @@ When this skill is invoked:
 
    Created manuscript/ with:
      <starting-chapter>.md (empty — ready for your first prose)
+
+   The CLAUDE.md in .great-authors/ tells Claude that for this project, the role is orchestrator — dispatch author sub-agents, don't write prose in-context. This prevents the most common failure mode in multi-session writing projects (mechanical prose from the orchestrator pattern-matching a voice). When you reopen this project in a future session, the CLAUDE.md is auto-loaded and orients Claude correctly.
 
    Next: run /authors-channel <author> to write, or /authors-draft "<brief>" <author> to generate a draft. Prose lands in manuscript/ by default. Use /authors-journal at the end of each session to capture decisions.
    ```

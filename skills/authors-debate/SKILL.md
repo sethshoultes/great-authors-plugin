@@ -85,6 +85,7 @@ Not for: general critique (`/authors-critique`); marked-up editing (`/authors-ed
    Pick ONE:
    - **Winner:** <author name> — <one sentence reason>
    - **Third way:** <a synthesis neither author proposed, if one exists>
+   - **Consensus:** <synthesized brief — when both authors converge, with refinements from Round 2 incorporated. Use when authors agreed in Round 1 and Round 2 produced a sharper joint position than either had alone. The consensus brief should be specific enough that an orchestrator can pass it directly to a rewrite without re-synthesizing.>
    - **Genre call:** <the choice depends on <X>; here's how to decide>
    ```
 
@@ -96,3 +97,5 @@ Not for: general critique (`/authors-critique`); marked-up editing (`/authors-ed
 - If either Round 1 response is thin or off-topic, ask the sub-agent to retry with clearer framing before moving to Round 2.
 - The verdict section is the most valuable part. Don't skip it by hedging — if the tension is irreducibly genre-dependent, say so explicitly.
 - Sub-agents inherit cwd; if `.great-authors/voice.md` establishes a house style for the project, both debaters should respect it in their reasoning (but they can argue for what the voice SHOULD be if the user is questioning it).
+- **Always run Round 2, even when Round 1 reveals consensus.** Convergence in Round 1 is not the end of the work — Round 2 is where each author refines their position by reading the other's, and where the synthesized brief gets sharpened beyond what either author had alone. Skipping Round 2 produces weaker briefs. The protocol earns its turns.
+- **The Consensus verdict is not a fallback.** It is the right outcome when both authors agreed in Round 1 and Round 2 added refinements. It produces a single coherent brief that can be passed directly to a rewrite (`/authors-rewrite`) without further synthesis. Use it when applicable; do not force a fake disagreement to satisfy the Winner / Third way framing.
