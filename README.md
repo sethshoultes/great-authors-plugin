@@ -64,7 +64,7 @@ Share the generated `great-authors.dxt` — teammates double-click to install.
 | `/authors-journal` | Session journal — now seven structured fields including Plants laid / Plants paid off / Continuity flags. **(v1.1)** |
 | `/authors-consolidate` | Promote recurring journal decisions to the permanent bible. |
 
-See `CHANGELOG.md` for the full history of changes since v1.0. See `ORCHESTRATING.md` for the orchestrator pattern this plugin is built around.
+For day-to-day usage with quick start, workflows, and troubleshooting, see [`MANUAL.md`](./MANUAL.md). For the orchestrator pattern this plugin is built around, see [`ORCHESTRATING.md`](./ORCHESTRATING.md). For per-release history, see [`CHANGELOG.md`](./CHANGELOG.md).
 
 ## Per-project memory and manuscript
 
