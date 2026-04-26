@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] — 2026-04-26
+
+The bridge release. Phase 7 of `/authors-orchestrate-novel` now surfaces publication and marketing handoffs — the manuscript pipeline is no longer the end of the road, it's the bridge to the rest of the constellation.
+
+### Changed
+
+- **`/authors-orchestrate-novel` Phase 7 closing** — added a Phase 7 closing handoff section that surfaces three downstream paths now that great-publishers and great-marketers exist:
+  1. Publication form (great-publishers): `/publishers-project-init`, `/publishers-channel maxwell-perkins` (threshold read), `/publishers-channel chip-kidd` (cover), `/publishers-channel tina-brown` (jacket copy + positioning), `/publishers-build-book-site`
+  2. Visual identity + chapter illustrations (great-filmmakers): `/filmmakers-build-keyframes` with `--include-prose-anchors` for downstream MDX wiring
+  3. Marketing + launch (great-marketers): `/marketers-project-init`, `/marketers-write-positioning`, `/marketers-write-launch-copy` across email/social/press/web
+  
+  Each handoff reads `.great-authors/` as the shared spine. None are required; the human picks. Surfacing them at the Phase 7 boundary closes the constellation loop the brief identified.
+
+### Why
+
+The trilogy improvements brief item #10 noted that `/authors-orchestrate-novel` ends at "Beta-reader package" — which was the right end when only the trilogy existed, but became a dead-end once the constellation grew to include publishers and marketers. The closing handoff is the constellation entry point for the post-manuscript phase.
+
 ## [1.5.0] — 2026-04-26
 
 The visual-stage release. Pairs with great-filmmakers v1.7 to make image-gen workflows lintable and DRY.

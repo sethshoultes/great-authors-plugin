@@ -197,7 +197,36 @@ Only run this phase if Phase 4 surfaced an unresolved craft question — a place
 - `.great-authors/exports/` — synopsis, query letter, optional reader's guide
 - A final session journal entry recording the project's completion state
 
-**Final human checkpoint:** *Beta-reader package ready. Project complete from a first-draft-to-beta-reader standpoint.*
+**Phase 7 closing handoff (added v1.6):**
+
+Before the final checkpoint, surface the publication path. The manuscript is now first-draft-to-beta-reader complete; the next move is publication form (cover, jacket copy, book site, threshold edit) and then marketing (positioning, launch copy across channels). These live in sibling plugins:
+
+```
+Phase 7 complete. Manuscript is at beta-reader package.
+
+Next moves (separate from this pipeline; pick what fits):
+
+1. Publication form (great-publishers-plugin):
+   /publishers-project-init
+   /publishers-channel maxwell-perkins   → threshold read of the manuscript
+   /publishers-channel chip-kidd          → cover concept brief
+   /publishers-channel tina-brown         → jacket copy + positioning
+   /publishers-build-book-site <slug>     → Astro book-site scaffold (v0.2+)
+
+2. Visual identity + chapter illustrations (great-filmmakers-plugin):
+   /filmmakers-build-keyframes manuscript/full-manuscript.md \\
+       --director hitchcock --include-prose-anchors
+   # Produces structured PROMPTS.md; render via scripts/render_book_illustrations.py
+
+3. Marketing + launch (great-marketers-plugin):
+   /marketers-project-init
+   /marketers-write-positioning <slug>
+   /marketers-write-launch-copy <slug>    → email, social, press, web
+```
+
+Each downstream plugin reads `.great-authors/` as the shared spine. The manuscript at `manuscript/full-manuscript.md`, the synopsis at `.great-authors/exports/synopsis.md`, and any illustrations at `film/render/book-illustrations/` are the inputs publication and marketing work read from. None of those handoffs are required; surface them and let the human pick.
+
+**Final human checkpoint:** *Beta-reader package ready. Project complete from a first-draft-to-beta-reader standpoint. Publication and marketing handoffs surfaced; pick your next move.*
 
 ## Decision points where the AI must pause for the human
 
