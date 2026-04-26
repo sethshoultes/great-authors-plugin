@@ -4,6 +4,26 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] — 2026-04-26
+
+The visual-stage release. Pairs with great-filmmakers v1.7 to make image-gen workflows lintable and DRY.
+
+### Added
+
+- **`templates/project-bible/visual-lints.md`** — new template scaffolded by `/authors-project-init`. Mechanical rules for the project's visual register: forbidden elements (no saguaros, no anachronistic vehicles, no whimsical linework), required elements (character continuity locks per character file), color register (monochrome / limited palette / photoreal), period markers (vehicle era, clothing, tech), character continuity locks (face never visible, specific scars in close shots, jewelry rules). The companion to `voice-lints.md` for prose. `/filmmakers-build-keyframes` reads it and the director uses it as the baseline negative-prompt for every cue point. Render scripts also prepend it to every submission.
+
+- **`## Visual` section in `templates/project-bible/project.md`** — root-level pointer for visual artifacts, alongside the existing `## Manuscript` section. Carries the illustration directory path, current illustration set, style preset slug (from `great-filmmakers/docs/style-presets.md`), and the verbatim style anchor. `/filmmakers-build-keyframes` reads this section to choose the preset and pull the anchor; render scripts read it to prepend the anchor to every submission. Eliminates per-prompt restatement of the project's visual register.
+
+- **Smoke test extensions** — `tests/smoke.sh` now verifies the v1.5+ project-bible scaffold completeness: `visual-lints.md` template exists, `project.md` template has the `## Visual` section. Catches drift if the templates get edited away.
+
+### Why
+
+Both additions came from real-use feedback on a 12-chapter literary mystery novel: the project had hard visual constraints (no Monument Valley silhouettes, no saguaros, no jewelry on certain hands, specific period markers, face-visibility rules) that lived only in per-prompt files. Each new prompt had to restate them. With `visual-lints.md` and the `## Visual` section, the constraints live in the bible once and propagate automatically to every illustration and keyframe in the project. See `~/brain/projects/trilogy-plugin-improvements-queue.md` items 3 and 4 for the full reasoning.
+
+### Cross-plugin awareness
+
+`great-filmmakers` v1.7 ships the `/filmmakers-build-keyframes` skill that consumes both `visual-lints.md` and the `## Visual` section. Without these in the bible, the skill still works (the director writes a custom anchor) — but with them, the project's register holds across every image automatically.
+
 ## [1.4.0] — 2026-04-24
 
 A coordination release. No new personas or skills; the surface area is unchanged.

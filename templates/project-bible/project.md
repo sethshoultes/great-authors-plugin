@@ -34,6 +34,24 @@ The top-level reference every author reads before editing this project.
 
 Commands that generate prose (`/authors-draft`, `/authors-channel`) save to the `Current` file by default. Update this field when you move on to the next chapter, or override per-command with `--to <path>`.
 
+## Visual
+
+(Optional — fill in when the project produces illustrations, keyframes, covers, or any image-gen artifacts. Skip if the project is prose-only.)
+
+**Path:** `film/render/book-illustrations/` (chapter illustrations) and `film/render/<engine>/keyframes/` (video keyframes, when applicable)
+**Current illustration set:** (the set you're actively rendering — e.g., `book-illustrations`, `chapter-01-keyframes`)
+**Style preset:** (slug from `great-filmmakers/docs/style-presets.md` — e.g., `pen-and-ink-editorial`, `photoreal-cinematic`, `mid-century-illustration`)
+
+**Style anchor (verbatim, prepended to every render prompt):**
+
+> (Replace this block with the project's actual style anchor. The text below is read verbatim by `/filmmakers-build-keyframes`, by render scripts, and by any cross-plugin skill that produces visual artifacts. Every image-gen submission for this project starts with this paragraph.)
+>
+> Pen-and-ink illustration, New Yorker editorial register. Crosshatch shading. High-contrast linework. Spare composition. Editorial, adult, draftsmanlike. Never whimsical. Paper-grain texture.
+
+Visual rules that can be lint-enforced (forbidden elements, required elements, period markers, character continuity locks) live in `visual-lints.md` alongside `voice-lints.md`. The two are companions: voice lints govern prose, visual lints govern images.
+
+`/filmmakers-build-keyframes` reads this section to choose the style preset and pull the verbatim style anchor. Project-level render scripts (`scripts/render_keyframes.py`, `scripts/render_book_illustrations.py`) read it to prepend the anchor to every submission. Eliminates per-prompt restatement of the project's visual register.
+
 ## Established facts
 
 (Anything about the world, the rules of the game, the history of the characters that's settled. If it's here, authors trust it; if it's contradicted in the manuscript, they flag it.)

@@ -99,6 +99,28 @@ if [ -n "$MISSING_DEFS" ]; then
   ERRORS=$((ERRORS + 1))
 fi
 
+# ---------- 5. v1.5+ project-bible scaffold checks (trilogy improvement #5) ----------
+
+echo "Checking v1.5+ project-bible scaffold completeness..."
+PKG_VERSION=$(grep '"version"' package.json | head -1 | sed 's/.*"version": *"\([^"]*\)".*/\1/')
+
+# v1.5 introduced visual-lints.md template + ## Visual section in project.md
+if [ "$PKG_VERSION" \> "1.4" ] || [ "$PKG_VERSION" = "1.5.0" ] || [ "$PKG_VERSION" \> "1.5.0" ]; then
+  VISUAL_LINTS_TEMPLATE="templates/project-bible/visual-lints.md"
+  if [ ! -f "$VISUAL_LINTS_TEMPLATE" ]; then
+    red "  FAIL: v1.5+ requires $VISUAL_LINTS_TEMPLATE (trilogy improvement #3)"
+    ERRORS=$((ERRORS + 1))
+  fi
+
+  PROJECT_TEMPLATE="templates/project-bible/project.md"
+  if [ -f "$PROJECT_TEMPLATE" ]; then
+    if ! grep -q '^## Visual$' "$PROJECT_TEMPLATE"; then
+      red "  FAIL: v1.5+ requires '## Visual' section in $PROJECT_TEMPLATE (trilogy improvement #4)"
+      ERRORS=$((ERRORS + 1))
+    fi
+  fi
+fi
+
 # ---------- Summary ----------
 
 echo ""

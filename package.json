@@ -1,6 +1,6 @@
 {
   "name": "great-authors",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Eleven legendary author personas plus Gottlieb the editor (twelve persona files) + workflow slash commands for prose craft and editorial work.",
   "author": "Seth Shoultes <seth@caseproof.com>",
   "repository": "github:sethshoultes/great-authors-plugin",
