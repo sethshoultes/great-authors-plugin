@@ -2,7 +2,13 @@
 
 This is the operational guide. The [README](./README.md) tells you what's in the plugin; this document tells you how to use it. Read the quick start first to get to a useful output in fifteen minutes; come back to the rest as you need it.
 
-For the design philosophy behind the plugin, see [ORCHESTRATING.md](./ORCHESTRATING.md). For per-release history, see [CHANGELOG.md](./CHANGELOG.md). For the canonical instructions Claude Code loads at runtime, see each skill's `SKILL.md`.
+For the design philosophy behind the plugin, see [ORCHESTRATING.md](./ORCHESTRATING.md). For per-release history, see [CHANGELOG.md](./CHANGELOG.md). For the canonical instructions Claude Code loads at runtime, see each skill's `SKILL.md`. For the design philosophy across the persona trilogy as a whole, see [Three Shapes of the Same Pattern](https://sethshoultes.com/blog/three-shapes.html).
+
+## Companion manuals in the trilogy
+
+- [Great Minds — User Manual](https://github.com/sethshoultes/great-minds-plugin/blob/main/MANUAL.md) — fourteen strategic decision-makers (Jobs, Musk, Buffett, Ive, Rubin, Huang, Winfrey, Rhimes, Blakely, Hamilton, Angelou, Sorkin, Aurelius, Jackson)
+- **Great Authors — User Manual (this document)** — eleven prose craft personas (Hemingway, Didion, McCarthy, Morrison, Wallace, etc., plus Gottlieb the editor)
+- [Great Filmmakers — User Manual](https://github.com/sethshoultes/great-filmmakers-plugin/blob/main/MANUAL.md) — twelve film craft personas (Scorsese, Kubrick, Kurosawa, Hitchcock, Spielberg, Lynch, Rhimes, Kaufman, Deakins, Schoonmaker, Zimmer, Ferretti)
 
 ---
 
