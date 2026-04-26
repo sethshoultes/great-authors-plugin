@@ -1,8 +1,8 @@
 {
   "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
   "name": "great-authors",
-  "version": "1.3.0",
-  "description": "Ten legendary author personas (Hemingway, McCarthy, Didion, Baldwin, McPhee, Wallace, Orwell, King, Le Guin, Vonnegut) plus slash commands for prose craft and editorial work. Companion to great-minds-plugin.",
+  "version": "1.4.0",
+  "description": "Eleven legendary author personas (Hemingway, McCarthy, Didion, Baldwin, Morrison, McPhee, Wallace, Orwell, King, Le Guin, Vonnegut) plus Gottlieb the editor — twelve persona files in total — and slash commands for prose craft and editorial work. Companion to great-minds-plugin and great-filmmakers-plugin.",
   "author": {
     "name": "Seth Shoultes",
     "url": "https://github.com/sethshoultes"

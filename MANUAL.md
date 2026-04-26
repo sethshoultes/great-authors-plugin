@@ -390,6 +390,14 @@ Some pairings work better than others. Not all combinations are useful.
 
 The author who wrote the chapter is the wrong choice for the chapter's critique pass. They will see only what they intended to put on the page, not what's actually there. Always pick a different editor.
 
+### When prose becomes film
+
+If a chapter, scene, or treatment drafted here will be adapted for video by [`great-filmmakers-plugin`](https://github.com/sethshoultes/great-filmmakers-plugin), the film side has hard production constraints that begin to constrain the prose. As of `great-filmmakers-plugin` v1.4 there are four render paths — A (Veo 3.0 Fast), B (Veo 3.1 Fast preview with reference images), C (Kling 2.5 Turbo), D (Leonardo Motion 2.0) — and each one fixes shot duration, aspect ratio, and the continuity mechanism a writer can rely on.
+
+The practical effect: a cinematic beat written without awareness of the paths can land on a duration no path supports. A held seven-second shot becomes a problem on Path A (rounds to {4, 6, 8}) and on Path C (snaps to {5, 10}). A multi-character scene that the writer imagined as a single 12-second take has to break across cuts on every path. Authors who write with the film side in mind produce material that adapts cleanly; authors who don't produce prose that costs the editorial pass on the film side a great deal of cutting.
+
+You don't need to learn the table here — that's the filmmakers plugin's domain, taught in detail by the Schoonmaker persona. Read [`great-filmmakers-plugin` MANUAL Section 9](https://github.com/sethshoultes/great-filmmakers-plugin/blob/main/MANUAL.md#9-video-gen-production-constraints) before drafting anything you intend to adapt, and consult the [video-gen services comparison](https://github.com/sethshoultes/brain/blob/main/learnings/video-gen-services-comparison.md) in the brain vault when choosing which path the project will commit to. The awareness is the point. The constraints become a craft prompt rather than a surprise.
+
 ---
 
 ## Troubleshooting
@@ -578,4 +586,4 @@ The `.great-authors/` directories in your project repos are not affected — the
 - Read each individual `skills/<name>/SKILL.md` for the canonical instructions Claude Code follows when invoking each skill.
 - File issues at [github.com/sethshoultes/great-authors-plugin/issues](https://github.com/sethshoultes/great-authors-plugin/issues).
 
-This manual covers v1.3. See [CHANGELOG.md](./CHANGELOG.md) for version history.
+This manual covers v1.4. See [CHANGELOG.md](./CHANGELOG.md) for version history.

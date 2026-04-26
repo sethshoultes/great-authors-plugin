@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] — 2026-04-24
+
+A coordination release. No new personas or skills; the surface area is unchanged.
+
+### Changed
+
+- `plugin.json` and `package.json` descriptions corrected from "Ten legendary author personas" to reflect the actual roster — eleven author voices (Morrison joined in v1.3) plus Gottlieb the editor, twelve persona files in total. The marketplace descriptions were already accurate; the top-level config files had drifted.
+- `plugin.json` description now also names `great-filmmakers-plugin` as a companion (it had only named `great-minds-plugin`).
+
+### Added
+
+- **MANUAL.md → "When prose becomes film"** — new subsection in *Working with the personas*. Signals that `great-filmmakers-plugin` v1.4 introduced four render paths (A: Veo 3.0 Fast / B: Veo 3.1 Fast preview / C: Kling 2.5 Turbo / D: Leonardo Motion 2.0), each with fixed shot durations, aspect ratios, and continuity mechanisms. Authors who draft material destined for adaptation should be aware before they write a held seven-second shot or imagine a single twelve-second take. The section does not restate the four-path table — it points at the canonical source: [`great-filmmakers-plugin` MANUAL Section 9](https://github.com/sethshoultes/great-filmmakers-plugin/blob/main/MANUAL.md#9-video-gen-production-constraints) and the [video-gen services comparison](https://github.com/sethshoultes/brain/blob/main/learnings/video-gen-services-comparison.md) in the brain vault.
+
+### Source
+
+The drift was surfaced when the trilogy companions were audited side-by-side. `great-filmmakers-plugin` shipped v1.4 the same day with the four-path render-service architecture; `great-minds-plugin` had been moving in lockstep; `great-authors` was a release behind in two small ways — its description still said "ten" personas (Morrison made it eleven, Gottlieb makes the persona-file count twelve), and its MANUAL had no cross-reference to the new film-side constraints. This release closes both gaps without changing architecture.
+
 ## [1.3.0] — 2026-04-26
 
 Adds Toni Morrison to the persona roster — a voice register no one else in the plugin currently covers.

@@ -16,6 +16,11 @@ cd distribution/dxt && npm install && npx @anthropic-ai/dxt pack
 ```
 Share the generated `great-authors.dxt` — teammates double-click to install.
 
+## What's new in v1.4
+
+- **Roster correction.** Toni Morrison joined in v1.3, but the plugin description still claimed "ten legendary author personas." Description and persona-count references are now consistent: eleven author voices plus Gottlieb the editor, twelve persona files in total.
+- **Cross-plugin coordination with `great-filmmakers-plugin`.** When prose drafted here is adapted for video, the film side's four render paths (Veo 3.0 Fast, Veo 3.1 Fast preview, Kling 2.5 Turbo, Leonardo Motion 2.0) constrain shot duration, aspect ratio, and continuity mechanism. MANUAL has a new "When prose becomes film" subsection that signals the awareness and links the [filmmakers MANUAL Section 9](https://github.com/sethshoultes/great-filmmakers-plugin/blob/main/MANUAL.md#9-video-gen-production-constraints) — the canonical source. No constraint table is restated here; that's the filmmakers plugin's domain.
+
 ## What's in v1.3
 
 ### 12 Personas — 11 author voices plus the editor
