@@ -7,7 +7,7 @@ For the design philosophy behind the plugin, see [ORCHESTRATING.md](./ORCHESTRAT
 ## Companion manuals in the trilogy
 
 - [Great Minds — User Manual](https://github.com/sethshoultes/great-minds-plugin/blob/main/MANUAL.md) — fourteen strategic decision-makers (Jobs, Musk, Buffett, Ive, Rubin, Huang, Winfrey, Rhimes, Blakely, Hamilton, Angelou, Sorkin, Aurelius, Jackson)
-- **Great Authors — User Manual (this document)** — eleven prose craft personas (Hemingway, Didion, McCarthy, Morrison, Wallace, etc., plus Gottlieb the editor)
+- **Great Authors — User Manual (this document)** — twelve prose craft personas (Hemingway, Didion, McCarthy, Morrison, Wallace, etc., plus Gottlieb the editor)
 - [Great Filmmakers — User Manual](https://github.com/sethshoultes/great-filmmakers-plugin/blob/main/MANUAL.md) — twelve film craft personas (Scorsese, Kubrick, Kurosawa, Hitchcock, Spielberg, Lynch, Rhimes, Kaufman, Deakins, Schoonmaker, Zimmer, Ferretti)
 
 ---
@@ -348,9 +348,9 @@ The manuscript is wrong, not the bible. Update the bible deliberately when the p
 
 ## Working with the personas
 
-Eleven personas. Pick deliberately.
+Twelve personas. Pick deliberately.
 
-### The ten author voices
+### The eleven author voices
 
 | Persona | When to pick |
 |---|---|
@@ -358,6 +358,7 @@ Eleven personas. Pick deliberately.
 | `mccarthy` | Biblical weight, mythic register. Landscape as character. Existential stakes. |
 | `didion` | Cool observational authority. Cultural reporting. Essays of cool intelligence. |
 | `baldwin` | Moral urgency. The essay as confrontation. Prose that needs to land politically. |
+| `morrison` | Lyric narrative grounded in Black American oral tradition. Polyphonic prose, non-linear time, beauty made out of survival. **(v1.3)** |
 | `mcphee` | Long-form nonfiction architecture. *Structure is destiny.* Deeply researched pieces. |
 | `wallace` | Maximalist, self-aware. Footnotes. Personal essays with texture. |
 | `king` | Voice-driven narrative fiction. Pace, dialogue, working novelist's toolbox. |
@@ -365,7 +366,7 @@ Eleven personas. Pick deliberately.
 | `le-guin` | Speculative fiction as thought experiment. World-building that serves theme. |
 | `orwell` | Plain-style hammer. Cuts cant and corporate jargon. Best at hunting robotic AI prose. |
 
-### The eleventh — Gottlieb
+### The twelfth — Gottlieb
 
 | Persona | When to pick |
 |---|---|
@@ -577,4 +578,4 @@ The `.great-authors/` directories in your project repos are not affected — the
 - Read each individual `skills/<name>/SKILL.md` for the canonical instructions Claude Code follows when invoking each skill.
 - File issues at [github.com/sethshoultes/great-authors-plugin/issues](https://github.com/sethshoultes/great-authors-plugin/issues).
 
-This manual covers v1.2. See [CHANGELOG.md](./CHANGELOG.md) for version history.
+This manual covers v1.3. See [CHANGELOG.md](./CHANGELOG.md) for version history.

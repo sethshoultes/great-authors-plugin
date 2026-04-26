@@ -1,6 +1,6 @@
 # Great Authors
 
-Eleven personas (ten authors plus Robert Gottlieb the editor) and seventeen slash commands for prose craft, editorial work, and long-form project management with a living memory bible. Includes the seven-phase autonomous-novel-orchestration pipeline. A Claude Code plugin. Companion to [`great-minds-plugin`](https://github.com/sethshoultes/great-minds-plugin).
+Twelve personas (eleven author voices including Toni Morrison, plus Robert Gottlieb the editor) and seventeen slash commands for prose craft, editorial work, and long-form project management with a living memory bible. Includes the seven-phase autonomous-novel-orchestration pipeline. A Claude Code plugin. Companion to [`great-minds-plugin`](https://github.com/sethshoultes/great-minds-plugin) and [`great-filmmakers-plugin`](https://github.com/sethshoultes/great-filmmakers-plugin).
 
 ## Install
 
@@ -16,9 +16,9 @@ cd distribution/dxt && npm install && npx @anthropic-ai/dxt pack
 ```
 Share the generated `great-authors.dxt` — teammates double-click to install.
 
-## What's in v1.2
+## What's in v1.3
 
-### 11 Personas — 10 author voices plus the editor
+### 12 Personas — 11 author voices plus the editor
 
 | Agent | Strength |
 |-------|----------|
@@ -26,6 +26,7 @@ Share the generated `great-authors.dxt` — teammates double-click to install.
 | `orwell-persona` | The plain-style hammer. Cuts political and corporate jargon. |
 | `didion-persona` | Cool observational authority. Cultural reporting and essays. |
 | `baldwin-persona` | Moral urgency. The essay as confrontation. |
+| `morrison-persona` | Lyric narrative grounded in Black American oral tradition. Polyphonic prose, non-linear time, beauty made out of survival. **(v1.3)** |
 | `mcphee-persona` | Long-form nonfiction architecture. Structure is destiny. |
 | `wallace-persona` | Maximalist, self-aware. Essays about attention and sincerity. |
 | `king-persona` | Voice-driven narrative. Pace, dialogue, working novelist's toolbox. |

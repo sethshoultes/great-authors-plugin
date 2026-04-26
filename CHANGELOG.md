@@ -4,6 +4,24 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] — 2026-04-26
+
+Adds Toni Morrison to the persona roster — a voice register no one else in the plugin currently covers.
+
+### Added
+
+- **`morrison-persona`** — lyric narrative grounded in Black American oral tradition. Polyphonic prose, non-linear time, beauty made out of survival. Distinct from Baldwin (essay confrontation), distinct from McCarthy (Biblical-male mythic register), distinct from Le Guin (speculative). Brings the voice of *Beloved*, *Song of Solomon*, *Jazz*, and *A Mercy* to the plugin — the moral lyric register, the writer who can address the dead and have them answer. Channel via `/authors-channel morrison` (aliases: `toni-morrison`, `toni`).
+
+### Changed
+
+- All persona-count references updated from "eleven personas" to "twelve personas" across README, MANUAL, marketplace.json, plugin.json, DXT manifest.
+- DXT server registers `morrison` in `AUTHOR_BLURBS` and accepts `toni-morrison` / `toni` as aliases.
+- `list_authors` description and `authors_channel` description updated to reflect the new persona count and add `morrison` to the valid-authors list.
+
+### Source
+
+The Morrison addition closes a gap surfaced when documenting the trilogy framing across great-authors / great-minds / great-filmmakers — the trilogy's prose plugin was missing the voice register that Morrison alone covers in the canon. Morrison also adds parity with the great-minds-plugin's expansion to include Buffett (capital allocation as a strategic register that no other great-minds persona covers).
+
 ## [1.2.0] — 2026-04-25 (later same day)
 
 Closes the autonomous-orchestration story and brings the DXT distribution to parity with the Claude Code plugin.

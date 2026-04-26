@@ -36,6 +36,7 @@ const AUTHOR_BLURBS = {
   "mccarthy": "Biblical weight, mythic register. Prose of terror and grace.",
   "vonnegut": "Humane irony. Devastating compression. Short stories and satire.",
   "le-guin": "Speculative fiction as thought experiment. World-building that serves theme.",
+  "morrison": "Lyric narrative grounded in Black American oral tradition. Polyphonic prose, non-linear time, beauty made out of survival.",
 };
 
 const BUILDER_BLURBS = {
@@ -60,6 +61,8 @@ const AUTHOR_ALIASES = {
   "kurt-vonnegut": "vonnegut",
   "cormac-mccarthy": "mccarthy",
   "george-orwell": "orwell",
+  "toni-morrison": "morrison",
+  "toni": "morrison",
 };
 
 function resolveAuthor(name) {
@@ -84,7 +87,7 @@ function resolveBuilder(name) {
 }
 
 const server = new Server(
-  { name: "great-authors", version: "1.2.0" },
+  { name: "great-authors", version: "1.3.0" },
   { capabilities: { tools: {} } }
 );
 
@@ -95,13 +98,13 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
     {
       name: "list_authors",
       description:
-        "List the ten author personas plus four tool personas with one-line descriptions of each.",
+        "List the eleven author personas (ten craft voices plus the editor) plus four tool personas with one-line descriptions of each.",
       inputSchema: { type: "object", properties: {} },
     },
     {
       name: "authors_channel",
       description:
-        "Return a prompt that loads a named author persona for direct collaborative drafting or editing. Valid authors: hemingway, orwell, didion, baldwin, mcphee, wallace, king, mccarthy, vonnegut, le-guin (short forms: papa, dfw, leguin).",
+        "Return a prompt that loads a named author persona for direct collaborative drafting or editing. Valid authors: hemingway, orwell, didion, baldwin, mcphee, wallace, king, mccarthy, vonnegut, le-guin, morrison (short forms: papa, dfw, leguin, toni).",
       inputSchema: {
         type: "object",
         properties: {
