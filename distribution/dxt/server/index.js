@@ -84,7 +84,7 @@ function resolveBuilder(name) {
 }
 
 const server = new Server(
-  { name: "great-authors", version: "1.0.0" },
+  { name: "great-authors", version: "1.2.0" },
   { capabilities: { tools: {} } }
 );
 
@@ -295,6 +295,71 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
         "Return a prompt that scans journal entries and offers to promote recurring decisions to the permanent bible. Requires at least 3 journal entries.",
       inputSchema: { type: "object", properties: {} },
     },
+    {
+      name: "authors_rewrite",
+      description:
+        "Return a prompt that dispatches a named author to rewrite an existing manuscript file from scratch with full bible context. Use when a chapter is not working — prose is mechanical, voice has slipped, or the chapter doesn't match the established voice. Discards the existing draft's emotional/dramaturgical choices but preserves architecture-level facts.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          file: {
+            type: "string",
+            description: "Path to the manuscript file to rewrite (typically manuscript/chapter-NN.md).",
+          },
+          author: {
+            type: "string",
+            description: "Author slug or short form (king, vonnegut, hemingway, etc).",
+          },
+          notes: {
+            type: "string",
+            description: "Optional editorial notes to fold into the rewrite brief (e.g., from a prior /authors-edit pass).",
+          },
+        },
+        required: ["file", "author"],
+      },
+    },
+    {
+      name: "authors_corpus_critique",
+      description:
+        "Return a prompt that runs ONE editor across MULTIPLE files in parallel, then consolidates into a corpus-level pattern report. Surfaces patterns no per-file critique catches — voice drift, recurring tics, structural failures visible only across multiple pieces. Different from authors_critique (N authors on 1 file). This is 1 author on N files.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          author: {
+            type: "string",
+            description: "Editor slug. Pick deliberately: orwell for cant/jargon/robotic-prose hunts; hemingway for sentence-level cuts; didion for cool-observation drift; mccarthy for weight inconsistency; baldwin for moral-weight drift; mcphee for structural drift in long-form.",
+          },
+          paths: {
+            type: "array",
+            items: { type: "string" },
+            description: "Array of file paths or glob patterns. At least 2 required, max 20 per pass.",
+          },
+          focus: {
+            type: "string",
+            description: "Optional one-line framing to focus the editor's reading (e.g., 'check for AI-generated robotic copy', 'check whether closes earn their weight').",
+          },
+        },
+        required: ["author", "paths"],
+      },
+    },
+    {
+      name: "authors_orchestrate_novel",
+      description:
+        "Return a prompt for the seven-phase autonomous-novel-orchestration pipeline: Concept → Architecture → First-draft skeleton → Continuity audit → Editorial pass → Debate → Final → Beta-reader package. Composes the existing skills into a workflow with HUMAN CHECKPOINTS at every phase boundary. The orchestrator dispatches author sub-agents; the human directs and reviews.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          phase: {
+            type: "string",
+            description: "Optional phase to run (0-7) or 'all' for full pipeline. Default 'all'. The pipeline pauses at every checkpoint regardless.",
+          },
+          resume: {
+            type: "boolean",
+            description: "If true, read the most recent journal entry and resume from where the prior session left off.",
+          },
+        },
+      },
+    },
   ],
 }));
 
@@ -421,6 +486,41 @@ server.setRequestHandler(CallToolRequestSchema, async (req) => {
 
   if (name === "authors_consolidate") {
     const text = `You are consolidating journal entries — promoting recurring decisions into the permanent bible.\n\nVerify .great-authors/journal/ exists and contains at least 3 entries. If fewer, tell the user there's not enough history and stop.\n\nRead all journal entries in .great-authors/journal/*.md, sorted by date.\n\nExtract "Decisions made" bullets. Group similar decisions. A "recurring" decision appears in 2+ entries or is clearly a ratification of an earlier one.\n\nFor each recurring decision, propose a promotion to the appropriate bible file:\n- Character-related → .great-authors/characters/<name>.md\n- Voice/rule-related → .great-authors/voice.md\n- Timeline-related → .great-authors/timeline.md\n- Premise/POV/tense-related → .great-authors/project.md\n- Invented term / brand → .great-authors/glossary.md\n\nAsk the user to confirm each promotion individually (yes / no / edit first).\n\nAfter all processed, offer to add a "## Consolidated on YYYY-MM-DD" section to the most recent journal entry showing what was promoted.\n\nFinal report: N decisions promoted across M bible files. Journal remains intact — consolidation is additive.\n\nBegin.`;
+    return { content: [{ type: "text", text }] };
+  }
+
+  if (name === "authors_rewrite") {
+    const { slug, body } = resolveAuthor(args.author);
+    const notesBlock = args.notes
+      ? `\n\n**Editorial notes to fold into the rewrite brief:**\n${args.notes}\n`
+      : "";
+    const text = `You are dispatching ${slug} to rewrite an existing manuscript file from scratch. This is a FULL REWRITE, not a revision. Discard the existing draft's emotional and dramaturgical choices but preserve architecture-level facts.\n\n**File to rewrite:** ${args.file}\n${notesBlock}\n---PERSONA: ${slug}---\n${body}\n---END PERSONA---\n\nInstructions:\n\n1. **Read the bible first.** If .great-authors/ exists in the user's working directory, read project.md, voice.md, voice-lints.md (if present), structure.md, suspense-architecture.md (if present), timeline.md, the most recent journal entry, all relevant character and place files, and the chapter immediately preceding and following the file being rewritten.\n\n2. **Read the existing file** to understand the architecture-level facts (named characters, named events, established locations, the chapter's required beats per structure.md). Note them.\n\n3. **Discard the existing prose's emotional choices.** Discard the existing prose's pacing. Discard the existing prose's voice if it has drifted. Hold to the established voice (per voice.md and prior chapters in the established voice).\n\n4. **Write a self-contained brief in your head** based on:\n   - Architecture beats from structure.md / suspense-architecture.md for this chapter\n   - Voice rules\n   - One concrete craft challenge specific to this chapter\n   - Length expectations (compare to existing draft; expand or compress as appropriate)\n   - The editorial notes above (if any)\n\n5. **Write the rewrite.** Save back to ${args.file}, OVERWRITING the existing draft.\n\n6. **Report under 200 words:** what you changed, what you kept, what you decided to leave alone.\n\nVoice and craft constraints come from your persona file and the project bible. The bible's voice rules override your default preferences.\n\nBegin.`;
+    return { content: [{ type: "text", text }] };
+  }
+
+  if (name === "authors_corpus_critique") {
+    const paths = Array.isArray(args.paths) ? args.paths : [];
+    if (paths.length < 2) {
+      throw new Error("authors_corpus_critique requires at least 2 file paths. Use authors_critique for single-file critique.");
+    }
+    if (paths.length > 20) {
+      throw new Error("authors_corpus_critique caps at 20 files per pass. Chunk by genre or theme for larger corpus.");
+    }
+    const { slug, body } = resolveAuthor(args.author);
+    const focusBlock = args.focus
+      ? `\n\n**Focus framing:** ${args.focus}\n`
+      : "";
+    const fileList = paths.map((p, i) => `${i + 1}. ${p}`).join("\n");
+    const text = `You are running a corpus critique pass — ONE editor (${slug}) across MULTIPLE files in parallel, with consolidated corpus-level pattern report.\n\nThis is different from authors_critique (which runs N authors on 1 file). This is 1 author on N files. The value is surfacing patterns that exist across the corpus but not within any single piece.\n\n**Editor:** ${slug}\n**Files (${paths.length}):**\n${fileList}\n${focusBlock}\n---PERSONA: ${slug}---\n${body}\n---END PERSONA---\n\nInstructions:\n\n1. **Dispatch ${slug} on each of the ${paths.length} files in parallel** via the Agent tool. Each dispatch reads ONE file and returns:\n   - Per-file verdict: HUMAN | ROBOTIC | MIXED — one-line reason\n   - What's working (max 2 bullets)\n   - What's not (max 2 bullets)\n   - **Pattern hypothesis** (1 sentence: what kind of failure-mode or strength might also appear in OTHER pieces by this writer? Be specific — name the kind, not just "bad prose.")\n   - Recommendation: leave alone | light edit | full rewrite\n\n   Each dispatch saves its verdict to /tmp/corpus-critique/<basename>-${slug}.md.\n\n2. **Wait for all dispatches** to complete. Read every verdict file.\n\n3. **Identify the corpus pattern.** Look for:\n   - **Direct convergence** — same pattern hypothesis named by multiple files\n   - **Indirect convergence** — different language, same underlying problem\n   - **Strong divergence** — different files have genuinely different problems. NO corpus pattern. Say so explicitly. False patterns are worse than no patterns.\n\n4. **Output the corpus report** to /tmp/corpus-critique/SUMMARY-${slug}-<YYYY-MM-DD>.md:\n\n   - Per-file verdict table\n   - The pattern (if convergence found) — one paragraph naming it, citing specific files\n   - If no pattern: explicit statement that no corpus-level signal exists\n   - Per-file recommendations\n   - Corpus-level recommendation — what should the writer change going forward beyond fixing the current corpus?\n\n5. **Show the SUMMARY to the user.** Offer next moves: apply per-file recommendations, save the pattern as a brain-vault learning if novel, or stop and let the user act at their own pace.\n\nThe pattern hypothesis at step 1 is what makes this different from running authors_critique N times. Each editor knows they're part of a corpus pass and is asked to surface patterns. Without that framing, you'd have to find patterns from inference. With it, the editors do the pattern-spotting themselves.\n\nBegin.`;
+    return { content: [{ type: "text", text }] };
+  }
+
+  if (name === "authors_orchestrate_novel") {
+    const phase = args.phase || "all";
+    const resumeNote = args.resume
+      ? "\n\n**Resume mode:** Read .great-authors/journal/ for the most recent entry. Identify which phase the project is currently in. Resume from the next checkpoint.\n"
+      : "";
+    const text = `You are orchestrating an end-to-end novel pipeline using the great-authors plugin's existing skills as building blocks. Your role is ORCHESTRATOR, not WRITER. Dispatch author sub-agents via the Agent tool. Do NOT write prose in-context yourself.\n\n**Phase to run:** ${phase}\n${resumeNote}\nIf you find yourself reaching for the Write tool to put prose in manuscript/, STOP. Ask: have I dispatched the writer for this? If not, that's the next move.\n\n## The seven phases\n\nEach phase produces specific artifacts. Each phase ends in a HUMAN CHECKPOINT — pause, surface a summary, wait for explicit approval before continuing.\n\n**Phase 0 — Concept (interactive).** Collect required inputs from the human: working title, genre, premise, POV/tense, dominant tone, estimated chapter count, major character roster (names + roles), key locations. Recommended: antagonist concept, resolution shape, voice author, one non-negotiable voice rule. If no .great-authors/ exists at the working directory, run /authors-project-init.\n\n**Phase 1 — Architecture.** For each character: dispatch /authors-build-character. For each place: /authors-build-place. For obvious major character pairs: /authors-build-relationship. Orchestrator drafts structure.md (full chapter outline) and suspense-architecture.md (audience-vs-character knowledge spine — bombs planted, paid off, withheld registers, visual carriers). Optional: voice author 5-bullet structural read on the bible. CHECKPOINT.\n\n**Phase 2 — First-draft skeleton.** For each chapter in structure.md, in order: read bible + prior/next chapters; brief; dispatch chosen voice author via /authors-rewrite or /authors-draft; read result; /authors-continuity; fix violations; update structure.md (mark drafted); commit. CHECKPOINT after all chapters drafted.\n\n**Phase 3 — Continuity audit.** Dispatch ONE comprehensive sub-agent to audit whole manuscript against whole bible. Triage violations: mechanical fixes (orchestrator-direct), surgical chapter fixes (focused dispatch), structural fixes (voice-author dispatch), bible additions. Apply fixes. Re-dispatch verification audit. Loop until clean. CHECKPOINT.\n\n**Phase 4 — Editorial pass.** For each chapter: dispatch one editor (rotating across chapters: vonnegut for compression, hemingway for cuts, didion for cool observation, mccarthy for weight, baldwin for moral weight). Each returns tight verdict (max 5 bullets per chapter). Save verdicts to .great-authors/edit-pass/. Compile master summary. Triage: surgical cuts (apply directly) vs. substantive rewrites (/authors-rewrite). CHECKPOINT.\n\n**Phase 5 — Debate (conditional).** If Phase 4 surfaced an unresolved craft tension, /authors-debate <topic> <author-A> <author-B>. ALWAYS run both rounds. Apply verdict via /authors-rewrite. Save transcripts to .great-authors/debates/.\n\n**Phase 6 — Final pass.** Last comprehensive continuity audit. Last /authors-critique sweep. Apply final cuts. /authors-journal. /authors-consolidate.\n\n**Phase 7 — Beta-reader package.** Generate manuscript/full-manuscript.md (concatenated). Dispatch synopsis writer (single page). Dispatch query letter draft. Optional: reader's guide. Final journal entry. CHECKPOINT.\n\n## Decision points where the AI MUST pause for human\n\nNever invented by the AI without explicit human input. If forced, stop and surface options.\n\n1. Antagonist / villain identity\n2. Resolution shape (happy / tragic / ambiguous)\n3. Major character motivations\n4. Specific cultural or factual content requiring outside knowledge\n5. Voice author for the manuscript (if not picked at Phase 0)\n6. Whether to run Phase 5\n\n## Day-to-day pattern (within any phase)\n\n1. Read bible / prior phase artifacts.\n2. Brief (self-contained).\n3. Dispatch (Agent tool, run_in_background=true for parallel).\n4. Read result.\n5. Verify (continuity check if manuscript touched).\n6. Integrate (surgical or another dispatch).\n7. Commit (per logical unit, descriptive message).\n8. Move on.\n\n## Anti-patterns\n\n- Writing prose in-context.\n- Pattern-matching an author's voice in your context.\n- Batching multiple chapters into a single autonomous run.\n- Skipping bible reads.\n- Thin briefs.\n- Skipping continuity verification after substantive changes.\n- Skipping Round 2 of debates when Round 1 reveals consensus.\n- Letting chapters silently contradict the architecture.\n- Advancing past a checkpoint without explicit human approval.\n\nBegin Phase ${phase === "all" ? "0 (Concept)" : phase} now. If interactive (Phase 0 or any phase requiring human inputs), ask the first question. Otherwise, summarize the phase's read step and dispatch the first sub-agent.`;
     return { content: [{ type: "text", text }] };
   }
 

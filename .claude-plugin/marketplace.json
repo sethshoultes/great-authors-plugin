@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "great-authors",
-  "description": "Eleven personas (ten authors plus Robert Gottlieb the editor) + 14 slash commands for prose craft and editorial work. Drafted prose lands in manuscript/ on disk by default. Full project-bible management.",
+  "description": "Eleven personas (ten authors plus Robert Gottlieb the editor) + 17 slash commands for prose craft and editorial work, including the seven-phase autonomous-novel-orchestration pipeline. Drafted prose lands in manuscript/ on disk by default. Full project-bible management.",
   "owner": {
     "name": "Seth Shoultes",
     "url": "https://github.com/sethshoultes"
@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "great-authors",
-      "description": "Eleven personas (ten authors plus Gottlieb the editor) + 14 slash commands for writing craft, editorial work, and long-form project management with a living bible. For Claude Code.",
+      "description": "Eleven personas (ten authors plus Gottlieb the editor) + 17 slash commands for writing craft, editorial work, and long-form project management with a living bible. Includes the seven-phase autonomous-novel-orchestration pipeline. For Claude Code.",
       "source": "./",
       "category": "productivity"
     },

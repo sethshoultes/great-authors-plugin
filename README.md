@@ -1,6 +1,6 @@
 # Great Authors
 
-Ten legendary author personas (Hemingway, McCarthy, Didion, Baldwin, McPhee, Wallace, Orwell, King, Le Guin, Vonnegut) plus ten slash commands for prose craft, editorial work, and long-form project management with a living memory bible. A Claude Code plugin. Companion to [`great-minds-plugin`](https://github.com/sethshoultes/great-minds-plugin).
+Eleven personas (ten authors plus Robert Gottlieb the editor) and seventeen slash commands for prose craft, editorial work, and long-form project management with a living memory bible. Includes the seven-phase autonomous-novel-orchestration pipeline. A Claude Code plugin. Companion to [`great-minds-plugin`](https://github.com/sethshoultes/great-minds-plugin).
 
 ## Install
 
@@ -16,9 +16,9 @@ cd distribution/dxt && npm install && npx @anthropic-ai/dxt pack
 ```
 Share the generated `great-authors.dxt` — teammates double-click to install.
 
-## What's in v1.0
+## What's in v1.2
 
-### 10 Author Personas
+### 11 Personas — 10 author voices plus the editor
 
 | Agent | Strength |
 |-------|----------|
@@ -32,33 +32,39 @@ Share the generated `great-authors.dxt` — teammates double-click to install.
 | `mccarthy-persona` | Biblical weight, mythic register. Prose of terror and grace. |
 | `vonnegut-persona` | Humane irony. Devastating compression. Short stories and satire. |
 | `le-guin-persona` | Speculative fiction as thought experiment. World-building that serves theme. |
+| `gottlieb-persona` | The editor. Modeled on Robert Gottlieb. Reads everything, briefs writers clearly, never writes prose. The orchestrator role made explicit. |
 
-### 2 Tool Personas
+### 4 Tool Personas
 
 | Agent | Role |
 |-------|------|
 | `character-builder` | Interviews you to build a character entry in the project bible. Optional `--author` lens. |
 | `scene-builder` | Interviews you to build a scene beat card. Optional `--author` lens. |
-| `place-builder` | Interviews you to build a place entry — sensory, meaning, change. Optional `--author` lens (mcphee, didion). |
-| `relationship-builder` | Interviews you about a relationship between two existing characters; updates both files reciprocally. |
+| `place-builder` | Interviews you to build a place entry. Optional `--author` lens (mcphee, didion). |
+| `relationship-builder` | Interviews about a relationship between two existing characters; updates both files reciprocally. |
 
-### 13 Slash Commands
+### 17 Slash Commands
 
 | Command | Purpose |
 |---------|---------|
-| `/authors-channel <author>` | Load an author into the main conversation for direct collaboration. |
+| `/authors-channel <author>` | Load an author into the main conversation for direct collaboration. Substantive prose auto-saves to manuscript. |
 | `/authors-draft <brief> <author>` | Draft new prose in an author's voice. Auto-sketches new characters into the bible. |
+| `/authors-rewrite <file> <author>` | Dispatch a named author to rewrite an existing manuscript file from scratch with full bible context. **(v1.1)** |
 | `/authors-edit <file> [authors...]` | Mark up a draft with consolidated edits from 1-2 authors. |
-| `/authors-critique <file> [authors...]` | Fast 3-bullet verdicts from 3 authors in parallel. |
-| `/authors-debate <topic> <author-A> <author-B>` | 2-round craft dispute between two authors. |
+| `/authors-critique <file> [authors...]` | Fast 3-bullet verdicts from N authors on ONE file. |
+| `/authors-corpus-critique <author> <paths...>` | Run ONE editor across MULTIPLE files in parallel; consolidate into a corpus-level pattern report. Surfaces patterns no per-file critique catches. **(v1.2)** |
+| `/authors-debate <topic> <author-A> <author-B>` | 2-round craft dispute between two authors. Verdict supports Winner / Third way / **Consensus** (v1.1) / Genre call. |
 | `/authors-continuity <file> [author]` | Audit a draft against the bible for continuity violations. |
-| `/authors-project-init` | Initialize a per-project memory bible (`.great-authors/`). |
+| `/authors-orchestrate-novel [--phase <N>]` | Seven-phase end-to-end novel orchestration: Concept → Architecture → First-draft skeleton → Continuity audit → Editorial pass → Debate → Final → Beta-reader package. Human checkpoints at every phase boundary. **(v1.2)** |
+| `/authors-project-init` | Initialize a per-project bible (`.great-authors/`). Now scaffolds `CLAUDE.md` (orchestrator-mode) and `voice-lints.md` (mechanical voice rules) in addition to the original files. |
 | `/authors-build-character <name> [--author <x>]` | Build a character entry in the bible. |
 | `/authors-build-scene [<id>] [--author <x>]` | Build a scene beat card in the bible. |
 | `/authors-build-place <name> [--author <x>]` | Build a place entry in the bible. |
 | `/authors-build-relationship <a> <b>` | Build a relationship entry between two existing characters. |
-| `/authors-journal` | Capture a session journal entry — decisions, unresolved threads, where you left off. |
+| `/authors-journal` | Session journal — now seven structured fields including Plants laid / Plants paid off / Continuity flags. **(v1.1)** |
 | `/authors-consolidate` | Promote recurring journal decisions to the permanent bible. |
+
+See `CHANGELOG.md` for the full history of changes since v1.0. See `ORCHESTRATING.md` for the orchestrator pattern this plugin is built around.
 
 ## Per-project memory and manuscript
 
@@ -121,9 +127,11 @@ cd ~/my-novel
 
 ## Roadmap
 
-All v1.0 goals shipped. Future work is driven by user feedback — open an issue at https://github.com/sethshoultes/great-authors-plugin/issues.
+v1.0, v1.1, and v1.2 all shipped. v1.2 closes the autonomous-orchestration story (the seven-phase pipeline + corpus critique + Gottlieb persona) and brings the DXT distribution to parity with the Claude Code plugin.
 
-See `docs/superpowers/specs/2026-04-24-great-authors-plugin-design.md` for the full design and `docs/superpowers/plans/` for implementation plans.
+Future work is driven by user feedback — open an issue at https://github.com/sethshoultes/great-authors-plugin/issues.
+
+See `CHANGELOG.md` for the per-release history. See `ORCHESTRATING.md` for the orchestrator pattern this plugin assumes. See `docs/superpowers/specs/2026-04-24-great-authors-plugin-design.md` for the v1.0 design and `docs/superpowers/plans/` for implementation plans.
 
 ## Performance notes
 

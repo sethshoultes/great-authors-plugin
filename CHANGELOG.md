@@ -4,6 +4,28 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] — 2026-04-25 (later same day)
+
+Closes the autonomous-orchestration story and brings the DXT distribution to parity with the Claude Code plugin.
+
+### Added
+
+- **`/authors-corpus-critique <author> <paths...>`** — new skill. Runs ONE editor across MULTIPLE files in parallel, then consolidates into a corpus-level pattern report. Surfaces patterns that exist across a body of work but are invisible to per-file critique (voice drift, recurring tics, structural failures only visible across pieces). Different from `/authors-critique` (N authors on 1 file). Source: a real session where Orwell critiquing 8 blog posts surfaced a unified *"openings land, closes reach"* pattern that no per-file pass would have caught.
+
+- **`/authors-orchestrate-novel`** — new top-level skill (`skills/authors-orchestrate-novel/SKILL.md`). Composes the existing skills into the seven-phase autonomous pipeline (Concept → Architecture → First-draft skeleton → Continuity audit → Editorial pass → Debate → Final → Beta-reader package), with human checkpoints at every phase boundary.
+
+- **`templates/project-bible/HOOKS.md`** — recommended hook configurations for projects using the plugin (continuity-check reminder on manuscript saves, voice-lints pre-commit, journal reminder on session end). Documents what NOT to put in hooks (auto-rewrites, auto-commits, anything that runs sub-agent dispatches).
+
+- **`tests/`** — smoke-test scaffolding. `tests/smoke.sh` validates frontmatter on all SKILL and persona files, version coherence across config files, persona-file count alignment between `agents/` and DXT bundle, and DXT tool-definition / handler alignment.
+
+### Changed
+
+- **DXT distribution catch-up.** `distribution/dxt/server/index.js` now exposes 17 tools (was 14) — adds `authors_rewrite`, `authors_corpus_critique`, `authors_orchestrate_novel`. Server version bumped from 1.0.0 to 1.2.0. Manifest tools array updated. The DXT distribution is now at parity with the Claude Code plugin's slash-command surface.
+
+- **README updated** to v1.2 surface area: 11 personas (Gottlieb is now in the table), 17 slash commands (with `(v1.1)` and `(v1.2)` markers on the new ones).
+
+- **Marketplace descriptions** in `.claude-plugin/marketplace.json` updated to "11 personas + 17 slash commands."
+
 ## [1.1.0] — 2026-04-25
 
 Field-tested update. Source: a multi-hour novel-writing session on a 17,500-word twelve-chapter project (`Murder on the Arizona Strip`) where the orchestrator (Claude as main agent) drifted into writing prose in-context instead of dispatching author personas. The user named the failure mode (*"those chapters you wrote are terrible and sound overly robotic. you should be using the authors to write and review not you."*), and the corrective dispatch via author sub-agents produced demonstrably better prose. This release codifies what the project learned so future users do not have to learn it the same way.
