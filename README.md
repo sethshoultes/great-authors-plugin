@@ -2,6 +2,8 @@
 
 Twelve personas (eleven author voices including Toni Morrison, plus Robert Gottlieb the editor) and seventeen slash commands for prose craft, editorial work, and long-form project management with a living memory bible. Includes the seven-phase autonomous-novel-orchestration pipeline. A Claude Code plugin. Companion to [`great-minds-plugin`](https://github.com/sethshoultes/great-minds-plugin) and [`great-filmmakers-plugin`](https://github.com/sethshoultes/great-filmmakers-plugin).
 
+> **New to the Caseproof persona constellation?** Start with [`/constellation-start`](https://github.com/sethshoultes/great-minds-plugin) in `great-minds` — it asks 2-3 questions about your project shape and routes to the right plugin.
+
 ## Install
 
 **Claude Code:**
