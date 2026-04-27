@@ -307,5 +307,5 @@ The journal is what makes the pipeline restartable across days, sessions, and ev
 
 - This skill is primarily orchestration. It composes existing skills rather than introducing new functionality. If a sub-step needs new capability, build the capability as its own skill first, then reference it from this orchestration document.
 - The skill name uses *novel* but the pipeline works for any long-form prose project — essay collections, narrative nonfiction, memoir. For shorter forms (a single short story, a single essay), use `/authors-channel` or `/authors-draft` directly; the pipeline is overkill.
-- For projects with a screenplay companion (the `great-filmmakers-plugin` use case), Phase 6 of this pipeline can integrate with that plugin's `/film-project-init` for film pre-production. The two plugins compose.
+- For projects with a screenplay companion (the `great-filmmakers-plugin` use case), Phase 6 of this pipeline can integrate with that plugin's `/filmmakers-project-init` for film pre-production. The two plugins compose.
 - The orchestrator is encouraged to channel `gottlieb-persona` while running this pipeline. Gottlieb embodies the orchestrator role explicitly — read everything, brief writers clearly, never write prose, surface tensions through debate, commit incrementally.
