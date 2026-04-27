@@ -104,8 +104,12 @@ fi
 echo "Checking v1.5+ project-bible scaffold completeness..."
 PKG_VERSION=$(grep '"version"' package.json | head -1 | sed 's/.*"version": *"\([^"]*\)".*/\1/')
 
+# Numeric major.minor compare (lexicographic compare would break at v1.10).
+PKG_MAJOR=$(echo "$PKG_VERSION" | cut -d. -f1)
+PKG_MINOR=$(echo "$PKG_VERSION" | cut -d. -f2)
+
 # v1.5 introduced visual-lints.md template + ## Visual section in project.md
-if [ "$PKG_VERSION" \> "1.4" ] || [ "$PKG_VERSION" = "1.5.0" ] || [ "$PKG_VERSION" \> "1.5.0" ]; then
+if [ "$PKG_MAJOR" -gt 1 ] || { [ "$PKG_MAJOR" -eq 1 ] && [ "$PKG_MINOR" -ge 5 ]; }; then
   VISUAL_LINTS_TEMPLATE="templates/project-bible/visual-lints.md"
   if [ ! -f "$VISUAL_LINTS_TEMPLATE" ]; then
     red "  FAIL: v1.5+ requires $VISUAL_LINTS_TEMPLATE (trilogy improvement #3)"
